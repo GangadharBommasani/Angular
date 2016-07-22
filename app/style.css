@@ -1,0 +1,25 @@
+fieldset {
+    min-width: 0 !important;
+    padding: .135em .625em .75em !important;
+    margin: 0 !important;
+    /*border: 0;*/
+    border:1px solid #ccc !important;
+    margin-bottom:10px !important;
+    padding-top:10px !important;
+    margin-top:0px !important;
+}
+legend {
+    display: block !important;
+    width: auto !important;
+    padding: 0 !important;
+    margin-bottom: 0px !important;
+    font-size: 16px !important;
+    line-height: inherit !important;
+    color: #333 !important;
+    border: 0 !important;
+    /*border-bottom: 1px solid #e5e5e5;*/
+}
+
+.table tr th,td{
+    text-align:center;
+}
