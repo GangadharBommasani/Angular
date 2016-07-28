@@ -1,0 +1,51 @@
+<html lang="en" ng-app="selectExample" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Hello Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div ng-controller="ExampleController">
+<ul>
+    <li ng-repeat="color in colors">
+        <label>Name: <input ng-model="color.name"/></label>
+        <label><input type="checkbox" ng-model="color.notAnOption">Disabled?</label>
+        <button ng-click="colors.splice($index, 1)" aria-label="Remove">X</button>
+    </li>
+    <li>
+       <button ng-click="colors.push({})">Add</button>
+    </li>
+</ul>
+<hr/>
+    <label>Color (null not allowed):
+<select ng-model="myColor" ng-options="color.name for color in colors"></select>
+</label><br/>
+
+<label>Color (null allowed):
+
+   <select ng-model="myColor" ng-options="color.name for color in colors">
+       <option value="">-- choose color --</option>
+    </select>
+
+</label><br/>
+
+<label> Color grouped by shade:
+<select ng-model="myColor" ng-options="color.name group by color.shade for color in colors">
+</select>
+</label><br/>
+
+<label> Color grouped by shade, with some disabled:
+    <select ng-model="myColor" ng-options="color.name group by color.shade disable when color.notAnOption for color in colors">
+    </select>
+</label><br/>
+Select <button ng-click="myColor={name:'Not in list', shade:'other'}">bogus</button>
+    <br/>
+    <hr/>
+    Currently Selected : {{ {selected_color:myColor} }}
+    <div style="border:solid 1px black; height:20px" ng-style="{'background-color':myColor.name}">
+    </div>
+</div>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="controllers/firstController.js"></script>
+</body>
+</html>

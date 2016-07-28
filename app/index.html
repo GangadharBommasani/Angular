@@ -10,6 +10,7 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body ng-controller="CompanyController">
+
 <div class="container">
  <form name="companyInformationForm" class="form-horizontal" role="form" ng-submit="addRow()" novalidate
        focus-on-empty>
@@ -47,6 +48,18 @@
              </div>
          </div>
      </div>
+      <div class="form-group">
+       <label class="col-md-2 control-label">Email</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="email" ng-model="email"
+                   placeholder="Enter Email Address" ng-pattern="emailFormat"
+                    />
+            <div class="error-container"
+                ng-show="companyInformationForm.$error.pattern">
+                <small class="text-danger">Please enter valid email address.</small>
+            </div>
+        </div>
+      </div>
 
          <div class="form-group">
              <label class="col-md-2 control-label">Established Date<span class="text-danger">*</span></label>
@@ -62,10 +75,10 @@
                         close-text="Close"
                         placeholder="MM/DD/YYYY"
                         required
-                        ng-disabled="ViewDisabled"
+
                         style="z-index:0;"/>
                 <span class="input-group-btn">
-                <button style="z-index:0;" ng-disabled="viewDisabled" type="button"
+                <button style="z-index:0;"  type="button"
                         class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
                  </p>
@@ -83,6 +96,7 @@
      <div class="form-group">
          <div style="padding-left:110px">
              <input type="submit" value="submit" class="btn btn-primary" />
+             <button type="button" type="reset" class="btn btn-warning" ng-click="submit_cancel()">Cancel</button>
          </div>
      </div>
      </fieldset>
@@ -96,6 +110,7 @@
                 <th>Company Name</th>
                 <th>Employees</th>
                 <th>Head Office</th>
+                <th>Email</th>
                 <th>Established Date</th>
                 <th>Action</th>
             </tr>
@@ -103,13 +118,23 @@
                 <td> {{ company.companyName }} </td>
                 <td> {{ company.employees }} </td>
                 <td> {{ company.headOffice }} </td>
+                <td> {{ company.email }} </td>
                 <td> {{ company.establishedDate }} </td>
                 <td> <input type="button" value="remove" class="btn btn-primary" ng-click="removeRow(company.companyName)"/></td>
             </tr>
         </table>
         </div>
 
-
+        <div class="row" style="text-align:center;">
+            <uib-pagination  style="margin-top:0px;"
+                             ng-show="tempUsers.length>0"
+                             ng-model="currentPage"
+                             total-items="tempUsers.length"
+                             max-size="maxSize"
+                             number-per-page="noOfPages"
+                             items-per-page="entryLimit"
+                             boundary-links="true">
+            </uib-pagination >
 
     </fieldset>
 
