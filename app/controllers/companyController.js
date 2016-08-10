@@ -1,4 +1,4 @@
-var companyController =function($scope, $uibModal) {
+var companyController =function($scope, $uibModal, addDealerRepValue) {
     $scope.status = {
         opened: false
     };
@@ -39,6 +39,8 @@ var companyController =function($scope, $uibModal) {
             'emailAddress':'abcdef@gmail.com'
         }
     ]
+    $scope.dealerReps=[];
+
     $scope.addRow = function () {
         var error = false;
         if (!$scope.companyName) {
@@ -127,13 +129,14 @@ var companyController =function($scope, $uibModal) {
 
         var moduleInstanceResult = $uibModal.open({
             templateUrl: 'templates/addPartnerRep.html',
+            controller: 'addPartnerRepController',
             backdrop: 'static'
         });
-
+        $scope.dealerReps = addDealerRepValue;
     };
 
 
 
 };
 
-companyController.$inject = ['$scope', '$uibModal'];
+companyController.$inject = ['$scope', '$uibModal', 'addDealerRepValueProvider'];

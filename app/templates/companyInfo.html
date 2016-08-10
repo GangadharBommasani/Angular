@@ -52,6 +52,7 @@
               <div class="col-sm-6">
                <select class="form-control"  id="partnerRep"  name="partnerRep"
                        ng-model="partnerRep"
+                       ng-options="dealer as dealer for dealer in dealerReps"
                        required>
                    <option value="">Select Partner</option>
                </select>
@@ -116,6 +117,7 @@
                     <th>Employees</th>
                     <th>Head Office</th>
                     <th>Email</th>
+                    <th>Dealer Rep</th>
                     <th>Established Date</th>
                     <th>Action</th>
                 </tr>
@@ -124,6 +126,7 @@
                     <td> {{ company.employees }} </td>
                     <td> {{ company.headOffice }} </td>
                     <td> {{ company.email }} </td>
+                    <td> {{ company.partnerRep }} </td>
                     <td> {{ company.establishedDate }} </td>
                     <td> <input type="button" value="remove" class="btn btn-primary" ng-click="removeRow(company.companyName)"/></td>
                 </tr>

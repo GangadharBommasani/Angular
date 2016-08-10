@@ -1,4 +1,4 @@
- var app =angular.module('companyInformationApp', ['ngRoute', 'ui.bootstrap', 'customDateFormat'])
+ var app =angular.module('companyInformationApp', ['ngRoute', 'ui.bootstrap', 'ngMessages', 'customDateFormat'])
 .config(['$routeProvider', function($routeProvider){
     $routeProvider
         .when('/', {
@@ -9,3 +9,5 @@
 }]);
 
 app.controller('companyController', companyController);
+ app.controller('addPartnerRepController', addPartnerRepController);
+ app.value('addDealerRepValueProvider', []);
